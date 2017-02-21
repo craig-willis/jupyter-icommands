@@ -1,0 +1,61 @@
+{
+  "key": "jupytericmds",
+  "label": "Jupyter Minimal Notebook with iRODS iCommands",
+  "description": "Jupyter Minimal Notebook",
+  "logo": "/asset/png/logos/jupyter-logo.png",
+  "image": {
+    "registry": "",
+    "name": "craigwillis/jupyter-icommands",
+    "tags": [
+      "latest"
+    ]
+  },
+  "display": "stack",
+  "access": "external",
+  "config": [
+    {
+      "name": "PASSWORD",
+      "label": "Password",
+      "isPassword": true
+    }
+  ],
+  "ports": [
+    {
+      "port": 8888,
+      "protocol": "http",
+      "contextPath": "/"
+    }
+  ],
+  "repositories": [
+    {
+      "url": "https://github.com/jupyter/notebook",
+      "type": "git"
+    }
+  ],
+  "readinessProbe": {
+    "type": "http",
+    "path": "/static/base/images/favicon.ico",
+    "port": 8888,
+    "initialDelay": 5,
+    "timeout": 600
+  },
+  "volumeMounts": [
+    {
+      "mountPath": "/home/jovyan/work"
+    }
+  ],
+  "resourceLimits": {
+    "cpuMax": 500,
+    "cpuDefault": 100,
+    "memMax": 1000,
+    "memDefault": 50
+  },
+  "tags": [
+    "7",
+    "21",
+    "20",
+    "28"
+  ],
+  "info": "https://nationaldataservice.atlassian.net/wiki/display/NDSC/Jupyter+Notebooks",
+  "authRequired": true
+}
